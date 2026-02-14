@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'CenturyGothicRegular';
+    src: url('/fonts/gothic.eot');
+    src: url('/fonts/gothic.eot') format('embedded-opentype'),
+    url('/fonts/gothic.woff') format('woff'),
+    url('/fonts/gothic.ttf') format('truetype'),
+    url('/fonts/gothic.svg#CenturyGothicRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'URWGothicL';
+    src: url('/fonts/urw-gothic-l-book.eot');
+    src: url('/fonts/urw-gothic-l-book.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/urw-gothic-l-book.woff') format('woff'),
+    url('/fonts/urw-gothic-l-book.ttf') format('truetype'),
+    url('/fonts/urw-gothic-l-book.svg#URWGothicL') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-size: 1rem;
+    letter-spacing: 0 !important;
+    /* CenturyGothicRegular, STHeitiTC-Light, STHeiti, URWGothicL,  */
+    font-family:  CenturyGothicRegular, Helvetica, Arial, sans-serif !important;
+    /*text-rendering: optimizeLegibility;*/
+}
+
