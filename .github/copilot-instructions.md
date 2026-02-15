@@ -158,6 +158,38 @@ Before finishing content updates:
 - Verify no missing shared assets or incorrect relative paths.
 - Keep wording and tone consistent with existing plaincode style.
 
+## Git Commit Message Format
+
+Use clear, descriptive commit messages that summarize the changes:
+
+**For simple changes:**
+- Use imperative mood: "Add feature" not "Added feature"
+- Be specific and concise
+- Examples:
+  - "Add privacy/imprint pages, implement glassmorphism design, unify header/footer"
+  - "Implement responsive design with dual breakpoints and enhanced glassmorphism"
+
+**For complex multi-feature commits:**
+- Start with a summary line
+- Follow with bullet points describing key changes
+- Use present tense descriptive format
+- Example structure:
+  ```
+  Migrate WordPress content to static plaincode.github.io
+  - Expand copilot instructions and migration rules
+  - Rework homepage branding, layout, and favicon setup
+  - Update apps page and fix broken card markup
+  - Remove Windows Store links from all app/product pages
+  - Add SEO-compatible /products/ overview and detail routes
+  ```
+
+**What to include:**
+- Major features or improvements
+- Responsive design changes (breakpoints, layout adjustments)
+- Visual design updates (glassmorphism, styling)
+- Structural changes (new pages, reorganization)
+- Bug fixes or compatibility improvements
+
 ## Scope Guidance for AI Edits
 - Prefer minimal, surgical edits.
 - Do not redesign the whole page when only content changes are requested.

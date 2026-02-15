@@ -428,6 +428,22 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.w3c-validator {
+    color: #666;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.w3c-validator:hover {
+    color: #0066cc;
+}
+
 .social-links {
     display: flex;
     gap: 1.5rem;
@@ -444,7 +460,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .copyright {
+    .footer-left {
         display: none;
     }
 
