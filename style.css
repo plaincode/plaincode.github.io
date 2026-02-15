@@ -458,6 +458,11 @@ h1, h2, h3, h4, h5, h6 {
     color: #0066cc;
 }
 
+/* Responsive footer link text */
+.link-text-short {
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .footer-left {
@@ -466,6 +471,14 @@ h1, h2, h3, h4, h5, h6 {
 
     .footer-content {
         justify-content: flex-end;
+    }
+
+    .link-text-full {
+        display: none;
+    }
+
+    .link-text-short {
+        display: inline;
     }
 }
 /* Responsive Design */

@@ -148,6 +148,162 @@ Maintain consistent color usage across the site:
 - Use brand orange sparingly for visual impact
 - Prefer rgba with opacity for glassmorphism effects
 
+## Legal Compliance (Germany/EU)
+
+### Legal Page Structure
+plaincode is operated from Germany and must comply with German and EU law:
+
+**Legal Pages:**
+- `/legal/` — German Impressum (legally required default, lang="de")
+- `/legal/en.html` — English Legal Notice translation (lang="en")
+- `/privacy/` — German Datenschutzerklärung (legally required default, lang="de")
+- `/privacy/en.html` — English Privacy Statement translation (lang="en")
+
+**Critical Requirements:**
+- German versions are **legally binding** and **required by law**
+- English versions are courtesy translations for international visitors
+- Both versions must have identical content (no contradictions)
+- All pages must have language switchers (🇩🇪 Deutsch | 🇬🇧 English)
+- Footer links always in English: "Legal Notice" | "Privacy Statement"
+- Responsive footer text: full on desktop (>768px), short on mobile (≤768px)
+
+### German Legal Requirements
+
+#### § 5 DDG (Digital Services Act) — Impressum
+Websites operated from Germany **must** provide a legal disclosure (Impressum) in German:
+- **Provider information**: Name, full address, contact email
+- **Editorial responsibility** (§ 18 MStV): Required for sites with editorial/blog content
+- **Note on language**: State that German version is legally required, English is courtesy
+- **Terminology**: Use "Legal Notice" (not "Imprint") in English version
+
+Current implementation:
+```
+Anbieter:
+Peter Breitling
+Sternstr. 5
+83071 Stephanskirchen
+Deutschland
+E-Mail: support@plaincode.com
+
+Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:
+Peter Breitling
+[same address]
+```
+
+#### § 18 MStV (Media State Treaty) — Editorial Responsibility
+Sites with regular editorial content (blogs, news, opinion pieces) must name a responsible person:
+- Required for journalistic-redactional content
+- Must include name and full address
+- Currently implemented in both legal pages
+
+#### DSGVO (GDPR) Art. 12 — Transparent Privacy Information
+Privacy policy must be in German for German users:
+- Required even for English-language sites operated from Germany
+- Must be "transparent" and understandable to German users
+- Non-German-only privacy = legal risk (Abmahngefahr)
+- German authorities require German documentation
+
+### Cookie & Tracking Compliance
+
+**Current Status: No Tracking**
+- Site operates **without** Google Analytics or any tracking tools
+- No cookies used for marketing/analytics
+- No consent banner required ✓
+
+**If Tracking is Re-Introduced:**
+- Non-essential cookies (tracking, marketing, analytics) require **active consent** (opt-in)
+- Cookie banner must appear **before** cookies are set
+- Pre-checked boxes are **not** valid consent
+- Must store consent preference
+- Even "cookieless" Google Analytics requires consent (processes personal data via IP/fingerprinting)
+
+**Privacy-Friendly Alternatives (No Consent Required):**
+- **Plausible Analytics** (recommended) — Cookie-free, EU-hosted, GDPR-compliant
+- **Fathom Analytics** — Privacy-first, no cookies
+- **Simple Analytics** — EU-based, cookie-free
+- **Matomo** (self-hosted) — Can be configured cookie-free
+
+These alternatives:
+- Do not use cookies
+- Do not collect personal data
+- Are GDPR-compliant by design
+- Do not require consent banners
+- Are lighter and faster than Google Analytics
+
+### Privacy Policy Scope
+
+The privacy policy covers:
+1. **Website** (plaincode.github.io)
+   - GitHub Pages hosting (server logs handled by GitHub)
+   - No tracking/analytics tools
+   - No cookies for marketing/analysis
+
+2. **Mobile Apps** (iOS/Android)
+   - All published apps: Clinometer, Magnetometer, AccelMeter, iSetSquare, Contacts by Number, MagicHue, etc.
+   - **No data transmission** — sensor data processed locally only
+   - **No tracking tools** — no analytics in apps
+   - **Device access** — camera/sensors used locally, not transmitted
+   - **In-app purchases** — handled by App Stores (Apple/Google privacy policies apply)
+
+### Footer Link Structure
+
+**Desktop (>768px):**
+```
+Legal Notice | Privacy Statement | Email Us | Social Media
+```
+
+**Mobile (≤768px):**
+```
+Legal | Privacy | Email | Social
+```
+
+Implementation using responsive CSS:
+```html
+<a href="/legal/">
+  <span class="link-text-full">Legal Notice</span>
+  <span class="link-text-short">Legal</span>
+</a>
+```
+
+CSS:
+```css
+.link-text-short { display: none; }
+@media (max-width: 768px) {
+  .link-text-full { display: none; }
+  .link-text-short { display: inline; }
+}
+```
+
+### Language Switcher Pattern
+
+Place at top of legal/privacy pages (right-aligned):
+```html
+<div style="text-align: right; margin-bottom: 1rem;">
+  <strong>🇩🇪 Deutsch</strong> | <a href="/legal/en.html">🇬🇧 English</a>
+</div>
+```
+
+English version:
+```html
+<div style="text-align: right; margin-bottom: 1rem;">
+  <a href="/legal/">🇩🇪 Deutsch</a> | <strong>🇬🇧 English</strong>
+</div>
+```
+
+### Legal Compliance Checklist
+
+Before deploying changes to legal pages:
+- [ ] German version exists and is accessible at `/legal/` and `/privacy/`
+- [ ] English version accessible at `/legal/en.html` and `/privacy/en.html`
+- [ ] Correct `lang` attributes (lang="de" for German, lang="en" for English)
+- [ ] Language switchers present on all legal pages
+- [ ] Content identical between language versions (no contradictions)
+- [ ] § 18 MStV editorial responsibility section present in legal pages
+- [ ] Privacy policy covers both website AND mobile apps
+- [ ] Footer links consistent across all 14+ pages
+- [ ] No tracking tools active without consent mechanism
+- [ ] Store links point to Apple/Google privacy policies where relevant
+
 ## When Updating Content
 
 Before finishing content updates:
@@ -157,6 +313,7 @@ Before finishing content updates:
 - Verify no broken HTML structure (especially in app-card sections).
 - Verify no missing shared assets or incorrect relative paths.
 - Keep wording and tone consistent with existing plaincode style.
+- **For legal pages: verify both German and English versions updated identically**
 
 ## Git Commit Message Format
 
