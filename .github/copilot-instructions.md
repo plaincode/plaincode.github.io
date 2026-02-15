@@ -154,14 +154,15 @@ Maintain consistent color usage across the site:
 plaincode is operated from Germany and must comply with German and EU law:
 
 **Legal Pages:**
-- `/legal/` — German Impressum (legally required default, lang="de")
-- `/legal/en.html` — English Legal Notice translation (lang="en")
-- `/privacy/` — German Datenschutzerklärung (legally required default, lang="de")
-- `/privacy/en.html` — English Privacy Statement translation (lang="en")
+- `/legal/` — English Legal Notice (default landing for international UX, lang="en")
+- `/legal/de.html` — German Impressum (legally required, lang="de")
+- `/privacy/` — English Privacy Statement (default landing for international UX, lang="en")
+- `/privacy/de.html` — German Datenschutzerklärung (legally required, lang="de")
 
 **Critical Requirements:**
 - German versions are **legally binding** and **required by law**
-- English versions are courtesy translations for international visitors
+- German versions are accessible and findable (legal requirement met)
+- English versions provide better UX for international visitors
 - Both versions must have identical content (no contradictions)
 - All pages must have language switchers (🇩🇪 Deutsch | 🇬🇧 English)
 - Footer links always in English: "Legal Notice" | "Privacy Statement"
@@ -276,25 +277,27 @@ CSS:
 
 ### Language Switcher Pattern
 
-Place at top of legal/privacy pages (right-aligned):
-```html
-<div style="text-align: right; margin-bottom: 1rem;">
-  <strong>🇩🇪 Deutsch</strong> | <a href="/legal/en.html">🇬🇧 English</a>
-</div>
-```
+Place at top of legal/privacy pages (right-aligned). Always show English left, German right:
 
 English version:
 ```html
 <div style="text-align: right; margin-bottom: 1rem;">
-  <a href="/legal/">🇩🇪 Deutsch</a> | <strong>🇬🇧 English</strong>
+  <strong>🇬🇧 English</strong> | <a href="/legal/de.html">🇩🇪 Deutsch</a>
+</div>
+```
+
+German version:
+```html
+<div style="text-align: right; margin-bottom: 1rem;">
+  <a href="/legal/">🇬🇧 English</a> | <strong>🇩🇪 Deutsch</strong>
 </div>
 ```
 
 ### Legal Compliance Checklist
 
 Before deploying changes to legal pages:
-- [ ] German version exists and is accessible at `/legal/` and `/privacy/`
-- [ ] English version accessible at `/legal/en.html` and `/privacy/en.html`
+- [ ] German version exists and is accessible at `/legal/de.html` and `/privacy/de.html`
+- [ ] English version accessible at `/legal/` and `/privacy/` (default landing)
 - [ ] Correct `lang` attributes (lang="de" for German, lang="en" for English)
 - [ ] Language switchers present on all legal pages
 - [ ] Content identical between language versions (no contradictions)
@@ -352,3 +355,9 @@ Use clear, descriptive commit messages that summarize the changes:
 - Do not redesign the whole page when only content changes are requested.
 - Do not add new frameworks/build steps unless explicitly requested.
 - Keep performance-friendly static site approach.
+
+## Git Workflow
+- **Do NOT automatically commit changes** unless explicitly requested by the user.
+- Wait for the user to initiate commits with phrases like "commit this", "let's commit", or "commit these changes".
+- After making edits, present the changes and wait for user confirmation before committing.
+- Users may want to review changes, make additional edits, or test before committing.
