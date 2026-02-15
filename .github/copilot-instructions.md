@@ -111,42 +111,68 @@ The site uses a modern glass/frosted design inspired by iOS design language:
 - Body font: CenturyGothicRegular, with fallbacks to Helvetica, Arial, sans-serif
 - Available custom fonts: Josefin Sans (self-hosted for privacy/performance)
 
-### Color Scheme
-Maintain consistent color usage across the site:
+### Color Scheme: Bavaria Blue with Neutral Background
+**Current Active Scheme: Bavaria Blue with Glassmorphism**
 
-**Brand Colors:**
-- **Brand Orange** (Icon/Accent): `#E36732` / `rgb(227, 103, 50)`
-  - Used for: App icons, brand accents, call-to-action elements
+A professional color scheme using Bavaria Blue (#1976D2) for interactive elements with a neutral light gray background, creating a clean, trustworthy appearance.
+
+**CSS Variables Used:**
+- `--brand-orange`: Brand orange color (currently unused, reserved for future use)
+- `--bavaria-blue`: Bavaria blue accent color (rgba(25, 118, 210, 1.0))
+- `--link-color`: Link color (#1976D2 - Bavaria blue)
+- `--link-color-hover`: Link hover color (#1565C0 - darker Bavaria blue)
+- `--bg-gradient-start`: Body background gradient start (#F9FAFB)
+- `--bg-gradient-end`: Body background gradient end (#F3F4F6)
+- `--header-footer-gradient-start/mid/end`: Header/footer gradients (light gray, 0.5 opacity)
+- `--hero-title-gradient-start/mid1/mid2/end`: Hero bar blue gradient (4 stops, 0.65-0.75 opacity)
+- `--button-gradient-start/end`: Learn More button gradients (blue, matches hero)
+
+**Current Color Implementation:**
+
+**Interactive Elements (Bavaria Blue):**
+- **Links**: `#1976D2` (Bavaria blue)
+  - Used for: All clickable navigation links, social links, main content links
+  - Hover state: `#1565C0` (darker blue)
+  - Active/current page: Black (#000) with bold font-weight
   
-**UI Colors:**
-- **Primary Blue** (Interactive): `#0066cc`
-  - Used for: Links, hover states, active navigation, buttons
-  - Apply to: `.main-nav a:hover`, `.main-nav a.active`, `a:hover`, button backgrounds
-  
-- **Text Gray** (Default): `#666`
-  - Used for: Body text, default navigation links, secondary text
-  - Apply to: `.main-nav a`, `.site-logo a`, general paragraph text
+**Navigation & Footer:**
+- **Header Navigation**: Blue links, bold black for active page
+- **Footer Social Links**: Blue with hover state
+- **Footer Copyright/W3C**: Black (subtle, less prominent)
+
+**Hero Title Bar (Blue Transparent Plexiglass Pipe):**
+- **4-stop blue gradient** with transparency (0.65-0.75 opacity):
+  - Start: `rgba(70, 130, 200, 0.65)`
+  - Mid1: `rgba(50, 110, 180, 0.7)` at 30%
+  - Mid2: `rgba(35, 95, 165, 0.72)` at 70%
+  - End: `rgba(25, 80, 150, 0.75)`
+- **Text**: White (#ffffff) with subtle shadow
+- **Effect**: `backdrop-filter: blur(10px)` for frosted glass
+- **Borders**: Light top border, blue bottom border
+- **Shadow**: Blue-tinted shadow for 3D depth
+
+**Buttons (Learn More):**
+- **Background**: Blue gradient matching hero bar
+- **Text**: White (#ffffff)
+- **Hover**: Darker blue gradient
 
 **Background & Glass Effects:**
-- **Header Background**: `rgba(255, 255, 255, 0.75)` with `backdrop-filter: blur(10px)`
-  - Semi-transparent white with frosted glass effect
-  
-- **Body Gradient**: `linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%)`
-  - Subtle light gray gradient for page background
-  
-- **Hero Section Gradient**: `linear-gradient(135deg, rgba(123, 124, 204, 0.85) 0%, rgba(21, 21, 137, 0.85) 100%)`
-  - Purple-blue gradient with transparency for sticky page titles
+- **Header/Footer**: `rgba(233, 233, 233, 0.5)` gradient with `backdrop-filter: blur(30px)`
+- **Body Background**: Light gray gradient (#F9FAFB → #F3F4F6)
+- **Content Cards** (.post, .app-card, .product-detail): White glass cards with blur(20px)
 
-**Border & Shadow Colors:**
-- Glass borders: `rgba(255, 255, 255, 0.3)` or `rgba(255, 255, 255, 0.2)`
-- Shadows: `rgba(0, 0, 0, 0.08)` for subtle depth
+**CSS Optimization:**
+- Glassmorphism styling uses grouped selectors: `.post, .app-card, .product-detail`
+- Shared hover effects for cards
+- No redundant CSS properties
+- Semantic class names (no utility classes needed)
 
 **Color Usage Rules:**
-- Always use the exact hex/rgba values listed above
-- Do not introduce new colors without updating this guide
-- Maintain color consistency across all pages
-- Use brand orange sparingly for visual impact
-- Prefer rgba with opacity for glassmorphism effects
+- Links are blue by default, bold black when active/current page
+- Hero bar and buttons use matching blue gradient
+- Optional/subtle links (copyright, W3C) are black
+- Maintain glassmorphism transparency throughout
+- Use --bavaria-blue for hover states on post/app-card titles
 
 ## Performance & PageSpeed Insights Optimizations
 
