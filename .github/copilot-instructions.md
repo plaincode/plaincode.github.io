@@ -148,6 +148,77 @@ Maintain consistent color usage across the site:
 - Use brand orange sparingly for visual impact
 - Prefer rgba with opacity for glassmorphism effects
 
+## Performance & PageSpeed Insights Optimizations
+
+The site is optimized for Core Web Vitals (LCP, FCP, CLS) and PageSpeed Insights scores.
+
+### Required Performance Patterns
+
+**1. Image Optimization (CLS Prevention):**
+All images, especially the logo, must have explicit width and height attributes:
+```html
+<img src="/images/icons/plaincode_logo_text.svg" alt="plaincode" width="347" height="74" fetchpriority="high">
+```
+- Logo dimensions: `width="347" height="74"` (based on SVG viewBox: 0 0 347.19 73.56)
+- Use `fetchpriority="high"` for above-the-fold images (logo, hero images)
+- Prevents cumulative layout shift (CLS) by reserving image space before load
+
+**2. Font Loading Optimization (FCP/LCP):**
+All @font-face declarations must include `font-display: swap`:
+```css
+@font-face {
+    font-family: 'CenturyGothicRegular';
+    src: url('/fonts/gothic.woff') format('woff');
+    font-display: swap;
+}
+```
+- Prevents invisible text flash (FOIT)
+- Shows fallback fonts immediately while custom fonts load
+- Improves First Contentful Paint (FCP)
+
+**3. Critical Resource Preloading:**
+Add preload link for critical fonts in all HTML pages:
+```html
+<link rel="preload" href="/fonts/gothic.woff" as="font" type="font/woff" crossorigin>
+```
+- Place in `<head>` before stylesheet link
+- Reduces critical path length for text rendering
+- Improves Largest Contentful Paint (LCP)
+
+**4. Resource Loading Order:**
+Maintain this exact order in `<head>` for optimal performance:
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="...">
+<link rel="icon" href="/images/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+<link rel="preload" href="/fonts/gothic.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+```
+
+### Performance Constraints (GitHub Pages)
+
+**Cannot be controlled from static content:**
+- **Cache TTL**: GitHub Pages enforces 10-minute cache (cannot be changed)
+- **Server headers**: No control over HTTP headers or CDN configuration
+- **Render-blocking CSS**: Some CSS render-blocking is unavoidable; inlining critical CSS would complicate maintenance
+
+**Acceptable trade-offs:**
+- CSS remains in external file for maintainability
+- Font files use standard loading (no complex subsetting)
+- Keep static site approach without build pipeline
+
+### When Adding New Pages
+
+Apply all performance optimizations to new pages:
+- [ ] Add explicit width/height to all images, especially logos
+- [ ] Use `fetchpriority="high"` on above-the-fold images
+- [ ] Include font preload link in `<head>`
+- [ ] Verify all @font-face rules have `font-display: swap`
+- [ ] Follow resource loading order in `<head>`
+
 ## Legal Compliance (Germany/EU)
 
 ### Legal Page Structure
