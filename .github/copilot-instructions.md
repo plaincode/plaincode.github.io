@@ -42,10 +42,12 @@ Keep these exact directory routes:
 ### 1) Header consistency (critical)
 When editing or adding pages, keep the header structure and branding consistent across all pages:
 - Use the same `site-header` + `header-content` block.
-- Include both logo image and text brand in `h1.site-logo`:
-	- logo: `/images/icons/plaincode_logo.jpg`
-	- text: `plaincode`
+- Include the responsive logo using `<picture>` element in `h1.site-logo`:
+	- Desktop: `/images/icons/plaincode_logo_text.svg` (wide version)
+	- Mobile (≤370px): `/images/icons/plaincode_logo_text_narrow.svg` (compact version)
+	- alt text: `plaincode`
 - Keep navigation style/classes consistent (`main-nav`, active link state).
+- Header layout: logo and navigation stay side-by-side on all screen sizes.
 
 ### 1b) Header/Footer synchronization (critical)
 - Treat header and footer as shared global layout blocks.
@@ -108,6 +110,43 @@ The site uses a modern glass/frosted design inspired by iOS design language:
 - Heading sizes: Conservative, close to body text size (1rem-1.7rem range)
 - Body font: CenturyGothicRegular, with fallbacks to Helvetica, Arial, sans-serif
 - Available custom fonts: Josefin Sans (self-hosted for privacy/performance)
+
+### Color Scheme
+Maintain consistent color usage across the site:
+
+**Brand Colors:**
+- **Brand Orange** (Icon/Accent): `#E36732` / `rgb(227, 103, 50)`
+  - Used for: App icons, brand accents, call-to-action elements
+  
+**UI Colors:**
+- **Primary Blue** (Interactive): `#0066cc`
+  - Used for: Links, hover states, active navigation, buttons
+  - Apply to: `.main-nav a:hover`, `.main-nav a.active`, `a:hover`, button backgrounds
+  
+- **Text Gray** (Default): `#666`
+  - Used for: Body text, default navigation links, secondary text
+  - Apply to: `.main-nav a`, `.site-logo a`, general paragraph text
+
+**Background & Glass Effects:**
+- **Header Background**: `rgba(255, 255, 255, 0.75)` with `backdrop-filter: blur(10px)`
+  - Semi-transparent white with frosted glass effect
+  
+- **Body Gradient**: `linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%)`
+  - Subtle light gray gradient for page background
+  
+- **Hero Section Gradient**: `linear-gradient(135deg, rgba(123, 124, 204, 0.85) 0%, rgba(21, 21, 137, 0.85) 100%)`
+  - Purple-blue gradient with transparency for sticky page titles
+
+**Border & Shadow Colors:**
+- Glass borders: `rgba(255, 255, 255, 0.3)` or `rgba(255, 255, 255, 0.2)`
+- Shadows: `rgba(0, 0, 0, 0.08)` for subtle depth
+
+**Color Usage Rules:**
+- Always use the exact hex/rgba values listed above
+- Do not introduce new colors without updating this guide
+- Maintain color consistency across all pages
+- Use brand orange sparingly for visual impact
+- Prefer rgba with opacity for glassmorphism effects
 
 ## When Updating Content
 
