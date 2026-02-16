@@ -78,3 +78,32 @@
     }
   }
 })();
+
+/**
+ * Load Umami analytics script with environment-specific website ID
+ */
+(function() {
+  'use strict';
+  
+  // Normalize hostname (remove www., etc.)
+  const hostname = window.location.hostname.replace(/^www\./, '');
+  let websiteId;
+  
+  // Choose website ID based on domain
+  if (hostname === 'plaincode.github.io') {
+    // Staging environment
+    websiteId = 'd95a6272-74ed-4710-9b09-fc3937947531';
+  } else if (hostname === 'plaincode.com') {
+    // Production environment
+    websiteId = '128a0259-e530-410b-9fad-5c20f0e2610b';
+  } else {
+    // Fallback for localhost or other domains (optional: don't load analytics)
+    return;
+  }
+  
+  const script = document.createElement('script');
+  script.defer = true;
+  script.src = 'https://cloud.umami.is/script.js';
+  script.setAttribute('data-website-id', websiteId);
+  document.head.appendChild(script);
+})();
