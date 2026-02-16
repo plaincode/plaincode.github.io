@@ -30,8 +30,8 @@ Keep these exact directory routes:
 - `/products/magichue/` → `products/magichue/index.html`
 
 ### Shared assets
-- Global styles: `style.css`
-- Global script: `script.js`
+- Global styles: `css/style.css`
+- Global script: `js/script.js`
 - Branding/logo/icons: `images/icons/*`
 - Store badges: `images/app-store-badge.svg`, `images/google_play_store_badge.svg`
 - App media/screenshots: `images/apps/*`, `images/screenshots/*`, `images/other/*`
@@ -64,7 +64,7 @@ All pages should include:
 	- `/images/icons/apple-touch-icon.png`
 
 ### 3) Styling discipline
-- Reuse existing classes and patterns from `style.css`.
+- Reuse existing classes and patterns from `/css/style.css`.
 - Avoid introducing one-off inline styles.
 - Prefer extending shared CSS rules instead of page-specific overrides.
 
@@ -75,7 +75,7 @@ All pages should include:
 
 ### 5) URL/path safety
 - Preserve existing URL structure for SEO/backward compatibility.
-- Use root-relative paths for shared assets (e.g. `/style.css`, `/images/...`) on nested pages.
+- Use root-relative paths for shared assets (e.g. `/css/style.css`, `/js/script.js`, `/images/...`) on nested pages.
 - Do not rename product slug folders unless explicitly requested.
 
 ### 6) Accessibility basics
@@ -220,8 +220,8 @@ Maintain this exact order in `<head>` for optimal performance:
 <link rel="icon" href="/images/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
 <link rel="preload" href="/fonts/gothic.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/script.js" defer></script>
 ```
 
 ### Performance Constraints (GitHub Pages)
