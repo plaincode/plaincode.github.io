@@ -6,7 +6,7 @@
     <description>News and updates from plaincode - mobile app development for iOS and Android</description>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Feb 2026 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://plaincode.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://plaincode.github.io/feed/" rel="self" type="application/rss+xml"/>
     
     <item>
       <title>Website Relaunch: New Modern Design &amp; Enhanced Performance</title>

@@ -39,7 +39,7 @@ Keep these exact directory routes:
 
 ### News & RSS Feed
 - `news/index.html` — complete news archive (all news items)
-- `feed.xml` — RSS feed (all news items, accessible at `/feed.xml`)
+- `feed/index.xml` — RSS feed (all news items, accessible at `/feed/`)
 - `index.html` — displays 3 most recent news items + "View all news →" link
 
 **News Management Workflow:**
@@ -48,7 +48,7 @@ When publishing new news items, update all three files synchronously:
 
 1. **Add to news/index.html**: Insert new `<article class="post">` at the top of the blog-posts section
 2. **Add to index.html**: Insert at the top, keep only 3 most recent posts, remove oldest
-3. **Add to feed.xml**: Insert new `<item>` at the top, update `<lastBuildDate>`, maintain chronological order
+3. **Add to feed/index.xml**: Insert new `<item>` at the top, update `<lastBuildDate>`, maintain chronological order
 4. **Update RSS feed discovery**: Both index.html and news/index.html include RSS feed link in `<head>`
 
 **Why LLM prompts (not automated tools):**
@@ -81,7 +81,7 @@ When publishing new news items, update all three files synchronously:
 **Checklist for new news items:**
 - [ ] Add to top of news/index.html
 - [ ] Add to top of index.html (keep only 3 most recent)
-- [ ] Add to top of feed.xml (update lastBuildDate)
+- [ ] Add to top of feed/index.xml (update lastBuildDate)
 - [ ] Use consistent date formats (HTML: "Month Day, Year", RSS: RFC 822)
 - [ ] Include links to relevant product pages where appropriate
 - [ ] Use proper CDATA escaping in RSS descriptions
