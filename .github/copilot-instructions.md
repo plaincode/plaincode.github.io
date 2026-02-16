@@ -37,6 +37,55 @@ Keep these exact directory routes:
 - App media/screenshots: `images/apps/*`, `images/screenshots/*`, `images/other/*`
 - Fonts: `fonts/*`
 
+### News & RSS Feed
+- `news/index.html` — complete news archive (all news items)
+- `feed.xml` — RSS feed (all news items, accessible at `/feed.xml`)
+- `index.html` — displays 3 most recent news items + "View all news →" link
+
+**News Management Workflow:**
+
+When publishing new news items, update all three files synchronously:
+
+1. **Add to news/index.html**: Insert new `<article class="post">` at the top of the blog-posts section
+2. **Add to index.html**: Insert at the top, keep only 3 most recent posts, remove oldest
+3. **Add to feed.xml**: Insert new `<item>` at the top, update `<lastBuildDate>`, maintain chronological order
+4. **Update RSS feed discovery**: Both index.html and news/index.html include RSS feed link in `<head>`
+
+**Why LLM prompts (not automated tools):**
+- Low update frequency (sporadic posts, months/years apart)
+- No build pipeline needed (keeps static site approach)
+- Flexible content formatting and tone
+- Context-aware summaries and key point extraction
+- Simple maintenance: "update RSS feed with this new post"
+
+**News Item Structure:**
+```html
+<article class="post">
+    <h3>Title</h3>
+    <p class="post-meta">Month Day, Year</p>
+    <p>Content with <a href="/products/app/">links</a> to products...</p>
+</article>
+```
+
+**RSS Item Structure:**
+```xml
+<item>
+    <title>Title</title>
+    <link>https://plaincode.github.io/news/#YYYY-MM-DD</link>
+    <guid>https://plaincode.github.io/news/#YYYY-MM-DD</guid>
+    <pubDate>Day, DD Mon YYYY 12:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Content...</p>]]></description>
+</item>
+```
+
+**Checklist for new news items:**
+- [ ] Add to top of news/index.html
+- [ ] Add to top of index.html (keep only 3 most recent)
+- [ ] Add to top of feed.xml (update lastBuildDate)
+- [ ] Use consistent date formats (HTML: "Month Day, Year", RSS: RFC 822)
+- [ ] Include links to relevant product pages where appropriate
+- [ ] Use proper CDATA escaping in RSS descriptions
+
 ## Content & Layout Consistency Rules
 
 ### 1) Header consistency (critical)
