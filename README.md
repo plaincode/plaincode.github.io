@@ -5,19 +5,43 @@ Official homepage for plaincode app development, hosted on GitHub Pages.
 ## About
 This repository contains the source code for the plaincode homepage at https://plaincode.github.io
 
-## Mission
-This site is being developed as a replacement for the existing WordPress-based homepage. The migration will happen incrementally, transforming the WordPress content into a modern, static site hosted on GitHub Pages.
-
-## Development
-The site is currently in early development. Content and features will be added progressively with the help of AI-assisted development tools.
+The site uses a modern glassmorphism design inspired by iOS, with a clean Bavaria Blue color scheme and neutral background. It's fully static with no build pipeline required.
 
 ## Structure
-- `index.html` - Main homepage
-- `style.css` - Styles
-- `script.js` - JavaScript functionality
-- `app/` - Application files
-- `fonts/` - Font files
-- `templates/` - Template files
+
+### Core Pages
+- `index.html` - Homepage with recent news
+- `products/index.html` - Apps overview
+- `news/index.html` - Complete news archive
+- `social/index.html` - Social media links
+
+### Product Pages (SEO-compatible routes)
+- `products/clinometer/`
+- `products/magnetmeter/`
+- `products/accelmeter/`
+- `products/isetsquare/`
+- `products/contactsbynumber/`
+- `products/magichue/`
+
+### Legal Pages (German/English)
+- `legal/` - Legal Notice / Impressum
+- `privacy/` - Privacy Statement / Datenschutzerklärung
+
+### Assets
+- `css/style.css` - Global styles with glassmorphism effects
+- `js/script.js` - JavaScript functionality
+- `fonts/` - Custom fonts (Gothic, Josefin Sans)
+- `images/` - Icons, app screenshots, badges
+- `feed/index.xml` - RSS feed
+
+## Technology
+- Static HTML/CSS/JavaScript
+- No frameworks or build tools
+- Optimized for Core Web Vitals
+- Responsive design (desktop/mobile)
+
+## Development
+Development uses AI-assisted tools following guidelines in `.github/copilot-instructions.md`
 
 ## License
 © 2016-2026 plaincode
