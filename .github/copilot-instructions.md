@@ -14,6 +14,8 @@ This repository is the source for **plaincode.github.io**, the static GitHub Pag
 - `index.html` — homepage / posts overview.
 - `apps.html` — apps overview page.
 - `products/index.html` — SEO-compatible products overview (`/products/`).
+- `contact/index.html` — contact information with email and social channels.
+- `social/index.html` — social media links and community information.
 
 ### Legal pages (migration-critical)
 - Ensure the legal pages from the original site are preserved in the static site migration.
@@ -307,13 +309,23 @@ plaincode is operated from Germany and must comply with German and EU law:
 - `/app-privacy/` — Redirect page to `/privacy/#mobile-apps` (backward compatibility for old app store links)
 
 **Backward Compatibility:**
-The old WordPress site had `/app-privacy/` for mobile app privacy. To maintain external links from app stores and old documentation:
+The old WordPress site had different URL structures. To maintain external links from app stores, old documentation, and search engines:
+
+**App Privacy Redirect:**
 - `/app-privacy/index.html` redirects to `/privacy/#mobile-apps`
+- Privacy policy uses **combined approach**: one document covering both website and mobile apps
+- Section anchors: `#website` and `#mobile-apps` for direct linking
+
+**Press Release Category Redirect:**
+- `/category/press-release/index.html` redirects to `/news/`
+- Old WordPress category URL preserved for external links and SEO
+- News section contains all announcements and press releases
+
+**Redirect Implementation Pattern:**
 - Uses HTML meta refresh + JavaScript fallback (GitHub Pages compatible)
 - Includes canonical link and noindex meta tag (SEO-safe)
 - Shows user-friendly message with manual link fallback
-- Privacy policy uses **combined approach**: one document covering both website and mobile apps
-- Section anchors: `#website` and `#mobile-apps` for direct linking
+- Consistent glassmorphism styling with site design
 
 **Critical Requirements:**
 - German versions are **legally binding** and **required by law**
@@ -465,7 +477,8 @@ Before deploying changes to legal pages:
 - [ ] Privacy policy covers both website AND mobile apps
 - [ ] Section anchors `#website` and `#mobile-apps` present in privacy pages
 - [ ] `/app-privacy/` redirect page exists and redirects to `/privacy/#mobile-apps`
-- [ ] Footer links consistent across all 14+ pages
+- [ ] `/category/press-release/` redirect page exists and redirects to `/news/`
+- [ ] Footer links consistent across all pages (currently 18+ pages)
 - [ ] No tracking tools active without consent mechanism
 - [ ] Store links point to Apple/Google privacy policies where relevant
 
@@ -479,6 +492,35 @@ Before finishing content updates:
 - Verify no missing shared assets or incorrect relative paths.
 - Keep wording and tone consistent with existing plaincode style.
 - **For legal pages: verify both German and English versions updated identically**
+
+## Maintaining These Instructions
+
+**CRITICAL: Keep copilot-instructions.md synchronized with project changes.**
+
+When making structural or architectural changes, update this file immediately:
+
+**Always update when:**
+- Adding new pages or routes (e.g., `/contact/`, `/social/`)
+- Creating redirects for backward compatibility (e.g., `/app-privacy/`, `/category/press-release/`)
+- Changing URL structure or file organization
+- Adding new sections to existing pages (e.g., new privacy policy sections)
+- Modifying footer/header structure across multiple pages
+- Adding new product pages or changing product URLs
+- Implementing new design patterns or CSS conventions
+- Adding new legal requirements or compliance rules
+
+**Why this matters:**
+- Copilot relies on these instructions to maintain consistency
+- Outdated instructions lead to divergent implementations
+- Future edits may break backward compatibility if routes aren't documented
+- Legal/compliance requirements must be tracked to avoid violations
+
+**How to update:**
+1. After implementing structural changes, immediately update relevant sections
+2. Document the path/route in the appropriate section ("Current Site Structure", "Backward Compatibility", etc.)
+3. Explain the purpose and implementation pattern
+4. Add to relevant checklists if applicable
+5. Update examples if the change affects common patterns
 
 ## Git Commit Message Format
 
