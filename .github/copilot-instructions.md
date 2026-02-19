@@ -304,6 +304,16 @@ plaincode is operated from Germany and must comply with German and EU law:
 - `/legal/de.html` — German Impressum (legally required, lang="de")
 - `/privacy/` — English Privacy Statement (default landing for international UX, lang="en")
 - `/privacy/de.html` — German Datenschutzerklärung (legally required, lang="de")
+- `/app-privacy/` — Redirect page to `/privacy/#mobile-apps` (backward compatibility for old app store links)
+
+**Backward Compatibility:**
+The old WordPress site had `/app-privacy/` for mobile app privacy. To maintain external links from app stores and old documentation:
+- `/app-privacy/index.html` redirects to `/privacy/#mobile-apps`
+- Uses HTML meta refresh + JavaScript fallback (GitHub Pages compatible)
+- Includes canonical link and noindex meta tag (SEO-safe)
+- Shows user-friendly message with manual link fallback
+- Privacy policy uses **combined approach**: one document covering both website and mobile apps
+- Section anchors: `#website` and `#mobile-apps` for direct linking
 
 **Critical Requirements:**
 - German versions are **legally binding** and **required by law**
@@ -387,9 +397,13 @@ The privacy policy covers:
 
 2. **Mobile Apps** (iOS/Android)
    - All published apps: Clinometer, Magnetometer, AccelMeter, iSetSquare, Contacts by Number, MagicHue, etc.
-   - **No data transmission** — sensor data processed locally only
-   - **No tracking tools** — no analytics in apps
-   - **Device access** — camera/sensors used locally, not transmitted
+   - **Anonymized analytics collection** — device type, device ID (anonymized), IP address (anonymized), OS, browser type, usage information
+   - **Purpose** — bug finding, feature improvement and prioritization
+   - **Data retention** — up to 24 months, then aggregated
+   - **No user-provided data** — apps do not ask for user input beyond functionality
+   - **Sensor data processed locally** — accelerometer, magnetometer, gyroscope, camera data stays on device, not transmitted
+   - **Third-party analytics services** — configured for anonymized collection only
+   - **Opt-out** — uninstall the application
    - **In-app purchases** — handled by App Stores (Apple/Google privacy policies apply)
 
 ### Footer Link Structure
@@ -449,6 +463,8 @@ Before deploying changes to legal pages:
 - [ ] Content identical between language versions (no contradictions)
 - [ ] § 18 MStV editorial responsibility section present in legal pages
 - [ ] Privacy policy covers both website AND mobile apps
+- [ ] Section anchors `#website` and `#mobile-apps` present in privacy pages
+- [ ] `/app-privacy/` redirect page exists and redirects to `/privacy/#mobile-apps`
 - [ ] Footer links consistent across all 14+ pages
 - [ ] No tracking tools active without consent mechanism
 - [ ] Store links point to Apple/Google privacy policies where relevant
