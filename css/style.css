@@ -43,11 +43,11 @@
 /* ====================================================================================================
    COLOR THEME SYSTEM
    ============================================
-   To switch themes: Comment out the current theme
-   and uncomment your desired theme below.
+   Light and dark mode with automatic system preference detection
+   and manual toggle support (localStorage-based, no cookies)
    ============================================ */
 
-/* Color scheme */
+/* Light Mode (Default) */
 :root {
     /* Brand Colors */
     --brand-orange: rgba(250, 100, 50, 1.0);
@@ -57,24 +57,126 @@
     --link-color: #1976D2;
     --link-color-hover: #1565C0;
     
+    /* Text Colors */
+    --text-primary: #333;
+    --text-secondary: #555;
+    --text-tertiary: #777;
+    --text-heading: #333;
+    --text-link-active: #000;
+    
     /* Background Colors */
     --bg-gradient-start: #F9FAFB;
     --bg-gradient-end: #F3F4F6;
+    
+    /* Glass Card Background */
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.3);
     
     /* Header/Footer Gradient (sticky elements) */
     --header-footer-gradient-start: rgba(233, 233, 233, 0.5);
     --header-footer-gradient-mid: rgba(224, 224, 224, 0.5);
     --header-footer-gradient-end: rgba(216, 216, 216, 0.5);
+    --header-footer-border: rgba(200, 200, 200, 0.3);
     
     /* Hero Title Gradient (sticky page title bar) */
     --hero-title-gradient-start: rgba(70, 130, 200, 0.65);
     --hero-title-gradient-mid1: rgba(50, 110, 180, 0.7);
     --hero-title-gradient-mid2: rgba(35, 95, 165, 0.72);
     --hero-title-gradient-end: rgba(25, 80, 150, 0.75);
+    --hero-border-top: rgba(255, 255, 255, 0.4);
+    --hero-border-bottom: rgba(25, 118, 210, 0.3);
     
     /* Button Gradients (Learn More buttons) */
     --button-gradient-start: rgba(70, 130, 200, 0.65);
     --button-gradient-end: rgba(35, 95, 165, 0.75);
+    --button-hover-start: rgba(50, 110, 180, 1.0);
+    --button-hover-end: rgba(25, 80, 150, 1.0);
+}
+
+/* Dark Mode - Automatic (system preference) */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        /* Link Colors - Slightly lighter for dark backgrounds */
+        --link-color: #42A5F5;
+        --link-color-hover: #64B5F6;
+        
+        /* Text Colors */
+        --text-primary: #E0E0E0;
+        --text-secondary: #B0B0B0;
+        --text-tertiary: #909090;
+        --text-heading: #F5F5F5;
+        --text-link-active: #FFFFFF;
+        
+        /* Background Colors */
+        --bg-gradient-start: #1A1A1A;
+        --bg-gradient-end: #0F0F0F;
+        
+        /* Glass Card Background - Darker with higher opacity */
+        --card-bg: rgba(30, 30, 30, 0.85);
+        --card-border: rgba(255, 255, 255, 0.1);
+        
+        /* Header/Footer Gradient */
+        --header-footer-gradient-start: rgba(30, 30, 30, 0.7);
+        --header-footer-gradient-mid: rgba(25, 25, 25, 0.7);
+        --header-footer-gradient-end: rgba(20, 20, 20, 0.7);
+        --header-footer-border: rgba(255, 255, 255, 0.1);
+        
+        /* Hero Title Gradient - Darker blue tones */
+        --hero-title-gradient-start: rgba(40, 80, 130, 0.8);
+        --hero-title-gradient-mid1: rgba(30, 65, 115, 0.85);
+        --hero-title-gradient-mid2: rgba(25, 55, 100, 0.87);
+        --hero-title-gradient-end: rgba(20, 45, 85, 0.9);
+        --hero-border-top: rgba(255, 255, 255, 0.15);
+        --hero-border-bottom: rgba(66, 165, 245, 0.3);
+        
+        /* Button Gradients */
+        --button-gradient-start: rgba(40, 80, 130, 0.8);
+        --button-gradient-end: rgba(25, 55, 100, 0.9);
+        --button-hover-start: rgba(30, 65, 115, 1.0);
+        --button-hover-end: rgba(20, 45, 85, 1.0);
+    }
+}
+
+/* Dark Mode - Manual Override */
+[data-theme="dark"] {
+    /* Link Colors - Slightly lighter for dark backgrounds */
+    --link-color: #42A5F5;
+    --link-color-hover: #64B5F6;
+    
+    /* Text Colors */
+    --text-primary: #E0E0E0;
+    --text-secondary: #B0B0B0;
+    --text-tertiary: #909090;
+    --text-heading: #F5F5F5;
+    --text-link-active: #FFFFFF;
+    
+    /* Background Colors */
+    --bg-gradient-start: #1A1A1A;
+    --bg-gradient-end: #0F0F0F;
+    
+    /* Glass Card Background - Darker with higher opacity */
+    --card-bg: rgba(30, 30, 30, 0.85);
+    --card-border: rgba(255, 255, 255, 0.1);
+    
+    /* Header/Footer Gradient */
+    --header-footer-gradient-start: rgba(30, 30, 30, 0.7);
+    --header-footer-gradient-mid: rgba(25, 25, 25, 0.7);
+    --header-footer-gradient-end: rgba(20, 20, 20, 0.7);
+    --header-footer-border: rgba(255, 255, 255, 0.1);
+    
+    /* Hero Title Gradient - Darker blue tones */
+    --hero-title-gradient-start: rgba(40, 80, 130, 0.8);
+    --hero-title-gradient-mid1: rgba(30, 65, 115, 0.85);
+    --hero-title-gradient-mid2: rgba(25, 55, 100, 0.87);
+    --hero-title-gradient-end: rgba(20, 45, 85, 0.9);
+    --hero-border-top: rgba(255, 255, 255, 0.15);
+    --hero-border-bottom: rgba(66, 165, 245, 0.3);
+    
+    /* Button Gradients */
+    --button-gradient-start: rgba(40, 80, 130, 0.8);
+    --button-gradient-end: rgba(25, 55, 100, 0.9);
+    --button-hover-start: rgba(30, 65, 115, 1.0);
+    --button-hover-end: rgba(20, 45, 85, 1.0);
 }
 
 /* CSS Reset & Base Styles */
@@ -88,9 +190,10 @@ body {
     font-size: 1rem;
     line-height: 1.6;
     font-family: CenturyGothicRegular, Helvetica, Arial, sans-serif;
-    color: #333;
+    color: var(--text-primary);
     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     background-attachment: fixed;
+    transition: color 0.3s ease, background 0.3s ease;
 }
 
 a {
@@ -118,15 +221,15 @@ h1, h2, h3, h4, h5, h6 {
 .post,
 .app-card,
 .product-detail {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease, border 0.3s ease;
 }
 
 .post:hover,
@@ -147,7 +250,8 @@ h1, h2, h3, h4, h5, h6 {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+    border-bottom: 1px solid var(--header-footer-border);
+    transition: background 0.3s ease, border 0.3s ease;
 }
 
 .header-content {
@@ -206,7 +310,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-nav a.active {
-    color: #000;
+    color: var(--text-link-active);
     font-weight: bold;
 }
 
@@ -224,9 +328,10 @@ h1, h2, h3, h4, h5, h6 {
     position: sticky;
     top: 73px;
     z-index: 90;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(25, 118, 210, 0.3);
+    border-top: 1px solid var(--hero-border-top);
+    border-bottom: 1px solid var(--hero-border-bottom);
     box-shadow: 0 2px 10px rgba(25, 118, 210, 0.15);
+    transition: background 0.3s ease, border 0.3s ease;
 }
 
 .tagline {
@@ -250,15 +355,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post h3 a {
-    color: #333;
+    color: var(--text-heading);
 }
 
 .post h3 a:hover {
-    color: var(--bavaria-blue);
+    color: var(--link-color);
 }
 
 .post-meta {
-    color: #777;
+    color: var(--text-tertiary);
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -298,20 +403,20 @@ h1, h2, h3, h4, h5, h6 {
 .app-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text-heading);
 }
 
 .app-card h3 a {
-    color: #333;
+    color: var(--text-heading);
 }
 
 .app-card h3 a:hover {
-    color: var(--bavaria-blue);
+    color: var(--link-color);
 }
 
 .app-card p {
     margin-bottom: 1rem;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .app-card ul {
@@ -321,7 +426,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .app-card li {
     margin-bottom: 0.5rem;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .app-links {
@@ -345,7 +450,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app-links a:hover {
-    background: linear-gradient(to bottom, rgba(50, 110, 180, 1.0), rgba(25, 80, 150, 1.0));
+    background: linear-gradient(to bottom, var(--button-hover-start), var(--button-hover-end));
     color: #ffffff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 3px 6px rgba(0, 0, 0, 0.18);
     transform: translateY(-1px);
@@ -381,7 +486,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-detail h3.product-title {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: var(--text-heading);
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -399,20 +504,20 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.2rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #444;
+    color: var(--text-heading);
 }
 
 .product-detail h5 {
     font-size: 1.1rem;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .product-detail .lead {
     font-size: 1.25rem;
     font-weight: 500;
-    color: #555;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
@@ -436,6 +541,81 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 2rem;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.15rem 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    line-height: 1;
+    margin: 0;
+    flex-shrink: 0;
+    color: var(--link-color);
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.15);
+    color: var(--link-color-hover);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.9);
+}
+
+.theme-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.theme-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Show/hide theme icons based on current theme */
+/* Show moon in light mode (click to go dark), sun in dark mode (click to go light) */
+[data-theme="dark"] .theme-icon-light {
+    display: flex;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+    display: none;
+}
+
+.theme-icon-light {
+    display: none;
+}
+
+.theme-icon-dark {
+    display: flex;
+}
+
+/* Auto mode - respect system preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-icon-light {
+        display: flex;
+    }
+    
+    :root:not([data-theme="light"]) .theme-icon-dark {
+        display: none;
+    }
+}
+
 /* Footer */
 .site-footer {
     background: linear-gradient(to bottom, 
@@ -444,12 +624,13 @@ h1, h2, h3, h4, h5, h6 {
         var(--header-footer-gradient-end) 100%);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    color: #000;
+    color: var(--text-primary);
     padding: 0.5rem 0;
-    border-top: 1px solid rgba(200, 200, 200, 0.3);
+    border-top: 1px solid var(--header-footer-border);
     position: sticky;
     bottom: 0;
     z-index: 90;
+    transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
 }
 
 .footer-content {
@@ -457,7 +638,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .copyright {
@@ -465,7 +646,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .copyright a {
-    color: #000;
+    color: var(--text-primary);
 }
 
 .copyright a.active {
@@ -475,11 +656,11 @@ h1, h2, h3, h4, h5, h6 {
 .footer-left {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
 }
 
 .w3c-validator {
-    color: #000;
+    color: var(--text-primary);
     font-size: 0.9rem;
 }
 
@@ -502,7 +683,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .social-links a.active {
-    color: #000;
+    color: var(--text-link-active);
     font-weight: bold;
 }
 
@@ -512,13 +693,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .footer-left {
+@media (max-width: 799px) {
+    .footer-left .copyright,
+    .footer-left .w3c-validator {
         display: none;
     }
 
+    .theme-toggle {
+        order: -1;
+    }
+
     .footer-content {
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .link-text-full {
@@ -552,17 +738,20 @@ h1, h2, h3, h4, h5, h6 {
         padding: 1rem;
     }
 
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
     .social-links {
         gap: 1.0rem;
     }
 
     .site-footer .container {
         padding: 0 1.0rem;
+    }
+}
+
+/* Very narrow screens - force footer column layout */
+@media (max-width: 320px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
     }
 }
 

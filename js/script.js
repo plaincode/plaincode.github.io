@@ -1,4 +1,60 @@
 /**
+ * Theme Toggle Functionality
+ * Supports automatic system preference detection and manual override
+ * Stores preference in localStorage (no cookies)
+ */
+(function() {
+  'use strict';
+
+  // Apply theme immediately to prevent flash
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      // User has a saved preference - apply it
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    // If no saved preference, CSS media query handles system preference automatically
+  }
+
+  // Apply theme before DOM loads to prevent flash
+  initTheme();
+
+  // Set up theme toggle button after DOM loads
+  function setupThemeToggle() {
+    const toggleButton = document.querySelector('.theme-toggle');
+    if (!toggleButton) return;
+
+    toggleButton.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      let newTheme;
+
+      if (currentTheme === 'dark') {
+        // Switch to light
+        newTheme = 'light';
+      } else if (currentTheme === 'light') {
+        // Switch to dark
+        newTheme = 'dark';
+      } else {
+        // No manual override yet - check system preference and toggle opposite
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        newTheme = prefersDark ? 'light' : 'dark';
+      }
+
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  // Run on DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupThemeToggle);
+  } else {
+    setupThemeToggle();
+  }
+})();
+
+/**
  * Handle documentation-only view for embedded/external contexts
  * Hides header, footer, and store links when specific URL parameters are present
  */

@@ -168,15 +168,40 @@ The site uses a modern glass/frosted design inspired by iOS design language:
 A professional color scheme using Bavaria Blue (#1976D2) for interactive elements with a neutral light gray background, creating a clean, trustworthy appearance.
 
 **CSS Variables Used:**
+
+**Light Mode (Default):**
 - `--brand-orange`: Brand orange color (currently unused, reserved for future use)
 - `--bavaria-blue`: Bavaria blue accent color (rgba(25, 118, 210, 1.0))
 - `--link-color`: Link color (#1976D2 - Bavaria blue)
 - `--link-color-hover`: Link hover color (#1565C0 - darker Bavaria blue)
+- `--text-primary`: Primary text color (#333)
+- `--text-secondary`: Secondary text color (#555)
+- `--text-tertiary`: Tertiary text color (#777)
+- `--text-heading`: Heading color (#333)
+- `--text-link-active`: Active link color (#000)
 - `--bg-gradient-start`: Body background gradient start (#F9FAFB)
 - `--bg-gradient-end`: Body background gradient end (#F3F4F6)
+- `--card-bg`: Glass card background (rgba(255, 255, 255, 0.7))
+- `--card-border`: Glass card border (rgba(255, 255, 255, 0.3))
 - `--header-footer-gradient-start/mid/end`: Header/footer gradients (light gray, 0.5 opacity)
+- `--header-footer-border`: Header/footer border
 - `--hero-title-gradient-start/mid1/mid2/end`: Hero bar blue gradient (4 stops, 0.65-0.75 opacity)
+- `--hero-border-top/bottom`: Hero bar borders
 - `--button-gradient-start/end`: Learn More button gradients (blue, matches hero)
+- `--button-hover-start/end`: Button hover state gradients
+
+**Dark Mode (Automatic):**
+All variables adjust automatically in dark mode:
+- `--link-color`: #42A5F5 (lighter blue for contrast)
+- `--link-color-hover`: #64B5F6
+- `--text-primary`: #E0E0E0
+- `--text-secondary`: #B0B0B0
+- `--text-tertiary`: #909090
+- `--text-heading`: #F5F5F5
+- `--text-link-active`: #FFFFFF
+- `--bg-gradient-start/end`: #1A1A1A → #0F0F0F
+- `--card-bg`: rgba(30, 30, 30, 0.85)
+- Glass effects and gradients optimized for dark backgrounds
 
 **Current Color Implementation:**
 
@@ -224,6 +249,48 @@ A professional color scheme using Bavaria Blue (#1976D2) for interactive element
 - Optional/subtle links (copyright, W3C) are black
 - Maintain glassmorphism transparency throughout
 - Use --bavaria-blue for hover states on post/app-card titles
+
+### Dark Mode Support
+
+The site includes full dark mode support with automatic system preference detection and manual toggle.
+
+**Implementation:**
+- **Automatic detection**: CSS `@media (prefers-color-scheme: dark)` respects system settings
+- **Manual override**: Theme toggle button (☀️/🌙) in header allows user preference
+- **localStorage persistence**: User's choice saved locally (no cookies, privacy-friendly)
+- **Smooth transitions**: All color changes animate with 0.3s ease
+
+**Theme Toggle Button:**
+- Located in header, right side after navigation
+- Sun icon (☀️) shown in light mode, moon icon (🌙) in dark mode
+- Accessible with `aria-label="Toggle dark mode"`
+- Button structure:
+  ```html
+  <button class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-icon theme-icon-light">☀️</span>
+      <span class="theme-icon theme-icon-dark">🌙</span>
+  </button>
+  ```
+
+**Dark Mode Color Adjustments:**
+- **Links**: Lighter blue (`#42A5F5`) for better contrast on dark backgrounds
+- **Text**: Light gray tones (`#E0E0E0` primary, `#B0B0B0` secondary)
+- **Backgrounds**: Dark gray gradient (`#1A1A1A` → `#0F0F0F`)
+- **Glass cards**: Dark with higher opacity (`rgba(30, 30, 30, 0.85)`)
+- **Hero bar**: Darker blue tones with adjusted opacity (0.8-0.9)
+- **Borders**: Subtle white borders (`rgba(255, 255, 255, 0.1)`)
+
+**CSS Variable System:**
+All colors use CSS custom properties for easy theme switching:
+- Light mode colors defined in `:root`
+- Dark mode defined in `@media (prefers-color-scheme: dark)` and `[data-theme="dark"]`
+- JavaScript applies `data-theme` attribute to `<html>` element for manual override
+
+**Maintenance Notes:**
+- When adding new colored elements, use CSS variables instead of hardcoded colors
+- Test new features in both light and dark mode
+- Ensure contrast ratios meet WCAG accessibility standards in both themes
+- Header/footer glassmorphism effects work beautifully in both modes
 
 ## Performance & PageSpeed Insights Optimizations
 
