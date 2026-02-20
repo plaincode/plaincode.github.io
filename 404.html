@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - plaincode">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+    <link rel="preload" href="/fonts/gothic.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+    <title>Page Not Found - plaincode</title>
+    <script>
+        // Redirect root-level product slugs to /products/<slug>/
+        var productSlugs = [
+            'clinometer',
+            'magnetmeter',
+            'accelmeter',
+            'isetsquare',
+            'contactsbynumber',
+            'magichue',
+            'scale'
+        ];
+        var slug = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase();
+        if (productSlugs.indexOf(slug) !== -1) {
+            window.location.replace('/products/' + slug + '/');
+        }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-logo">
+                    <a href="/">
+                        <picture>
+                            <source media="(max-width: 370px)" srcset="/images/icons/plaincode_logo_text_narrow.svg">
+                            <img src="/images/icons/plaincode_logo_text.svg" alt="plaincode" width="347" height="74" fetchpriority="high">
+                        </picture>
+                    </a>
+                </h1>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/products/">APPS</a></li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon theme-icon-light">☀️</span>
+                    <span class="theme-icon theme-icon-dark">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="container">
+                <h2 class="tagline">Page Not Found</h2>
+            </div>
+        </section>
+
+        <div class="container">
+            <article class="post" style="text-align: center; padding: 3rem 2rem;">
+                <h3>404 — This page doesn't exist</h3>
+                <p>The page you're looking for couldn't be found. It may have moved or never existed.</p>
+                <p>
+                    <a href="/">← Back to Home</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="/products/">Browse Apps</a>
+                </p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                <a href="/legal/">
+                    <span class="link-text-full">Legal Notice</span>
+                    <span class="link-text-short">Legal</span>
+                </a> |
+                <a href="/privacy/">
+                    <span class="link-text-full">Privacy Statement</span>
+                    <span class="link-text-short">Privacy</span>
+                </a> |
+                <a href="/contact/">
+                    <span class="link-text-full">Email Us</span>
+                    <span class="link-text-short">Email</span>
+                </a> |
+                <a href="/social/">
+                    <span class="link-text-full">Social Media</span>
+                    <span class="link-text-short">Social</span>
+                </a>
+            </p>
+            <p><small>© 2025 plaincode</small></p>
+        </div>
+    </footer>
+</body>
+</html>
