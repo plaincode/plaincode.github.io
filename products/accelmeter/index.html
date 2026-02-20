@@ -51,9 +51,9 @@
 
                 <p class="lead">Smoothly visualize and measure the current acceleration in real-time.</p>
 
-                <p>It can be used on earth, on moon or in orbit (where relative would be equal to absolute mode) to visualize the direction and strength of the gravitation – or simply at home to measure the g-forces you reach while shaking your phone – however be warned if you tend to get to the limits!</p>
+                <p>It can be used on earth, on moon or in orbit (where relative would be equal to absolute mode – please prove) to visualize the direction and strength of the gravitation – or simply at home to measure the g-forces you reach while shaking your phone – however be warned if you tend to get to the limits!</p>
 
-                <p>A fun application is to place the device steady in your car (or any other moving vehicle), go to relative mode, zero it once when you are standing and then see the current g-forces in effect while you drive (e.g. what g-force does your car reach when you accelerate?).</p>
+                <p>A fun application is to place the iPhone/iPod steady in your car (or any other moving vehicle), go to relative mode, zero it once when you are standing and then see the current g-forces in effect while you drive (e.g. what g-force does your car reach when you accelerate?).</p>
 
                 <h3>User Manual</h3>
 
@@ -62,20 +62,38 @@
                 <h4>Acceleration Main Mode</h4>
                 <p>In this main mode the yellow button switches between the following sub-modes:</p>
 
-                <ul>
-                    <li><strong>Absolute Mode (Initial):</strong> Displays the reverse acceleration of the device (1g up when hold steady). The digital indicator shows the acceleration in g.</li>
-                    <li><strong>Z-Rotation:</strong> The arrow will display the rotation around the Z-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center.</li>
-                    <li><strong>Y-Rotation:</strong> The arrow will display the rotation around the Y-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center.</li>
-                    <li><strong>X-Rotation:</strong> The arrow will display the rotation around the X-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center.</li>
-                </ul>
+                <div class="mode-item">
+                    <img src="/images/apps/AccelerometerAbsoluteMode.png" alt="AccelMeter Absolute Mode" class="mode-screenshot">
+                    <p><strong>Absolute Mode (Initial):</strong> Displays the reverse acceleration of the device (1g up when hold steady). The digital indicator shows the acceleration in g. We will add the option to reverse this arrow in this mode with the next update of this software.</p>
+                </div>
+
+                <div class="mode-item">
+                    <img src="/images/apps/AccelerometerZMode.png" alt="AccelMeter Z-Rotation Mode" class="mode-screenshot">
+                    <p><strong>Z-Rotation:</strong> The arrow will display the rotation around the Z-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center. A way to calibrate will be added with one of the next updates, so you could use this as a level.</p>
+                </div>
+
+                <div class="mode-item">
+                    <img src="/images/apps/AccelerometerYMode.png" alt="AccelMeter Y-Rotation Mode" class="mode-screenshot">
+                    <p><strong>Y-Rotation:</strong> The arrow will display the rotation around the Y-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center. A way to calibrate will be added with one of the next updates, so you could use this as a level.</p>
+                </div>
+
+                <div class="mode-item">
+                    <img src="/images/apps/AccelerometerXMode.png" alt="AccelMeter X-Rotation Mode" class="mode-screenshot">
+                    <p><strong>X-Rotation:</strong> The arrow will display the rotation around the X-Axis of the device. The digital indicator shows the angle numerically (-180° – +180°) where 0° is in the center. A way to calibrate will be added with one of the next updates, so you could use this as a level.</p>
+                </div>
 
                 <h4>Acceleration Relative Main Mode</h4>
                 <p>In this mode the yellow button resets the compensation vector.</p>
 
-                <p><strong>Relative Mode:</strong> This mode shows the relative strength (absolute minus compensation vector) of the acceleration. When the device is rotated in any direction the compensation vector has to be reset by pressing the yellow button when holding steady.</p>
+                <div class="mode-item">
+                    <img src="/images/apps/AccelerometerRelativeMode.png" alt="AccelMeter Relative Mode" class="mode-screenshot">
+                    <p><strong>Relative Mode:</strong> This mode shows the relative strength (absolute minus compensation vector) of the acceleration. When the device is rotated in any direction the compensation vector has to be reset by pressing the yellow button when holding steady.</p>
+                </div>
 
                 <h3>Final Notes</h3>
-                <p><strong>For recreational use only.</strong> However it CAN (!) be very accurate. The measurement is performed as good as possible (we try our best) by using the inbuilt accelerometer to its limits. The range of the accelerometer typically has a max of ±3g (~4.2g displayed here if combined).</p>
+                <p>To use as a metal detector the objects need to be actively magnetic since physically no strong enough oscillation is actively produced on a typical mobile device (not specifically built for this application). This is fundamental.</p>
+
+                <p><strong>For recreational use only.</strong> However it CAN (!) be very accurate. The measurement is performed as good as possible (we try our best) by using the inbuilt accelerometer and magnetometer to their limits. The range of the accelerometer typically has a max of ±3g (~4.2g displayed here if combined) and each magnetometer usually recalibrates internally when over ±120μT in one axis. However, tell us your experience!</p>
                 </article>
             </div>
         </div>
