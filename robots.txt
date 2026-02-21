@@ -1,0 +1,146 @@
+# robots.txt for plaincode.github.io / www.plaincode.com
+# Copyright (c) 2026 Peter Breitling / plaincode. All Rights Reserved.
+
+# Allow all standard search engine crawlers
+User-agent: *
+Allow: /
+
+# --- AI training crawlers ---
+# Public content (pages, products, news) is allowed.
+# Design assets, branding, fonts, and site logic are protected.
+
+User-agent: GPTBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: ChatGPT-User
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: OAI-SearchBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: anthropic-ai
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Claude-Web
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: ClaudeBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Google-Extended
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: CCBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: cohere-ai
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: FacebookBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Bytespider
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Diffbot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: omgili
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: omgilibot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: PerplexityBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: ImagesiftBot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Timpibot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Applebot-Extended
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+User-agent: Amazonbot
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /css/
+Disallow: /js/
+Disallow: /tools/
+
+# Sitemap
+Sitemap: https://www.plaincode.com/feed/index.xml
