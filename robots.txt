@@ -142,5 +142,6 @@ Disallow: /css/
 Disallow: /js/
 Disallow: /tools/
 
-# Sitemap
+# Sitemaps
+Sitemap: https://www.plaincode.com/sitemap.xml
 Sitemap: https://www.plaincode.com/feed/index.xml

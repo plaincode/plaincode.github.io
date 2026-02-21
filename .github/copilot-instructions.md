@@ -364,6 +364,32 @@ Apply all performance optimizations to new pages:
 - [ ] Verify all @font-face rules have `font-display: swap`
 - [ ] Follow resource loading order in `<head>`
 
+Apply SEO and social preview metadata to new pages:
+- [ ] Add `<link rel="canonical" href="https://www.plaincode.com/PAGE-PATH/">` to every page
+- [ ] Add Open Graph tags (`og:type`, `og:site_name`, `og:title`, `og:description`, `og:url`, `og:image`) to all content pages (homepage, products, news, contact, social)
+- [ ] Add Twitter Card tags (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) to all content pages
+- [ ] Use page-specific app icon for `og:image` / `twitter:image` on product pages; use `/images/icons/plaincode_logo.jpg` as fallback on general pages
+- [ ] **Skip OG/Twitter Card tags on legal/privacy pages** — they are never shared on social media; canonical + description is sufficient
+- [ ] Add `<link rel="canonical">` to legal/privacy pages too (prevents duplicate content from `plaincode.github.io` domain)
+- [ ] Add new page to `sitemap.xml` with appropriate `<lastmod>`, `<changefreq>`, and `<priority>`
+- [ ] For the homepage only: keep the JSON-LD Organization schema in `<head>` up to date
+
+**OG/Twitter tag pattern for content pages:**
+```html
+<link rel="canonical" href="https://www.plaincode.com/PAGE/">
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="plaincode">
+<meta property="og:title" content="PAGE TITLE - plaincode">
+<meta property="og:description" content="PAGE DESCRIPTION">
+<meta property="og:url" content="https://www.plaincode.com/PAGE/">
+<meta property="og:image" content="https://www.plaincode.com/images/icons/APP_ICON_OR_plaincode_logo.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PAGE TITLE - plaincode">
+<meta name="twitter:description" content="PAGE DESCRIPTION">
+<meta name="twitter:image" content="https://www.plaincode.com/images/icons/APP_ICON_OR_plaincode_logo.jpg">
+```
+
 ## Legal Compliance (Germany/EU)
 
 ### Legal Page Structure
