@@ -62,6 +62,10 @@
   'use strict';
 
   function isDocumentationOnlyMode() {
+    // Never apply on the homepage — only for product/app/manual pages
+    const path = window.location.pathname;
+    if (path === '/' || path === '/index.html') return false;
+
     const url = window.location.href.toLowerCase();
     const params = new URLSearchParams(window.location.search);
     
