@@ -30,6 +30,7 @@ Keep these exact directory routes:
 - `/products/isetsquare/` → `products/isetsquare/index.html`
 - `/products/contactsbynumber/` → `products/contactsbynumber/index.html`
 - `/products/magichue/` → `products/magichue/index.html`
+- `/products/scale/` → `products/scale/index.html`
 
 ### Shared assets
 - Global styles: `css/style.css`
@@ -484,6 +485,61 @@ The privacy policy covers:
    - **Third-party analytics services** — configured for anonymized collection only
    - **Opt-out** — uninstall the application
    - **In-app purchases** — handled by App Stores (Apple/Google privacy policies apply)
+
+### Comment System
+
+**Active on:** All product pages (see canonical list under [SEO-compatible product detail routes](#seo-compatible-product-detail-routes))
+
+**Architecture: Custom native JS + Cusdis REST API (no iframe)**
+- No Cusdis iframe — comments are fetched via `fetch()` and rendered as HTML
+- "Leave a Comment" button opens a glassmorphism modal popup
+- Modal POSTs to Cusdis API → shows "awaiting approval" message
+- Reply buttons on each comment open the modal pre-filled with `parentId`
+- All `btn-add-comment` and reply wiring is in `js/script.js` (custom comment IIFE)
+- Styles in `css/style.css` under `/* === Comments Section === */`
+
+**Self-hosted Cusdis on Railway:**
+- URL: `https://cusdis-production-e4c0.up.railway.app`
+- Fork: `plaincode/cusdis` on GitHub, branch `master`
+- Database: PostgreSQL on Railway (same project)
+- App ID: `e5e9acdd-5e70-4ca7-9de6-c02c8441f730`
+- Comments require manual approval in the Cusdis dashboard before appearing
+- Railway env vars: `DB_TYPE=pgsql`, `DB_URL`, `NEXTAUTH_URL`, `HOST`, `USERNAME`, `JWT_SECRET`
+
+**CORS:** The Cusdis fork must allow requests from `www.plaincode.com`. Without proper CORS headers on the Railway API, browsers will block the fetch. The `pages/api/open/comments.ts` file uses the `Cors()` middleware.
+
+**Gravatar integration:**
+- The Cusdis fork's `pages/api/open/comments.ts` computes `gravatar_hash` (SHA-256 of email) server-side and returns it instead of the raw email
+- The JS uses the hash to build a Gravatar URL: `https://www.gravatar.com/avatar/{hash}?s=40&d=404`
+- `d=404` means no avatar → HTTP 404 → `onerror` hides the `<img>` silently
+- Disclosed to users in the modal comment form under the email field
+- Legal basis: voluntary consent (user chooses to provide email and is informed)
+
+**Data stored per comment:**
+- Name (required), email (optional, not shown publicly), comment text, IP address (by Railway/Cusdis), timestamp
+- Parent comment ID (for threaded replies)
+- Approval status (pending until manually approved)
+
+**API endpoints used:**
+- GET `{host}/api/open/comments?appId={id}&pageId={slug}&page={n}` — fetch approved comments (paginated, all pages fetched)
+- POST `{host}/api/open/comments` — submit new comment
+
+**HTML pattern per product page:**
+```html
+<section class="comments-section"
+    data-cusdis-host="https://cusdis-production-e4c0.up.railway.app"
+    data-cusdis-app-id="e5e9acdd-5e70-4ca7-9de6-c02c8441f730"
+    data-cusdis-page-id="PAGE_SLUG"
+    data-cusdis-page-title="PAGE_TITLE"
+    data-cusdis-page-url="https://www.plaincode.com/products/PAGE_SLUG/">
+    <button class="btn-add-comment">Leave a Comment</button>
+    <div class="comments-list"><p class="comments-loading">Loading comments…</p></div>
+</section>
+```
+
+**WordPress import tool:** `tools/import-wp-comments.js` — Node script to migrate approved WP comments to the Railway PostgreSQL. Requires `pg` package. Run with: `node tools/import-wp-comments.js <export.xml> <postgres-url>`
+
+**Privacy policy impact:** Comment system and Gravatar must be disclosed in privacy policy (sections already added to `/privacy/` and `/privacy/de.html`).
 
 ### Footer Link Structure
 
