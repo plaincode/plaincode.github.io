@@ -525,7 +525,7 @@ The privacy policy covers:
 - Styles in `css/style.css` under `/* === Comments Section === */`
 
 **Self-hosted Cusdis on Railway:**
-- URL: `https://cusdis-production-e4c0.up.railway.app`
+- URL: `https://comments.plaincode.com`
 - Fork: `plaincode/cusdis` on GitHub, branch `master`
 - Database: PostgreSQL on Railway (same project)
 - App ID: `e5e9acdd-5e70-4ca7-9de6-c02c8441f730`
@@ -553,7 +553,7 @@ The privacy policy covers:
 **HTML pattern per product page:**
 ```html
 <section class="comments-section"
-    data-cusdis-host="https://cusdis-production-e4c0.up.railway.app"
+    data-cusdis-host="https://comments.plaincode.com"
     data-cusdis-app-id="e5e9acdd-5e70-4ca7-9de6-c02c8441f730"
     data-cusdis-page-id="PAGE_SLUG"
     data-cusdis-page-title="PAGE_TITLE"
