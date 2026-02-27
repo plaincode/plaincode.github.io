@@ -703,6 +703,9 @@ Use clear, descriptive commit messages that summarize the changes:
 - Structural changes (new pages, reorganization)
 - Bug fixes or compatibility improvements
 
+**Do NOT include:**
+- Co-authored-by trailers or any attribution lines
+
 ## Scope Guidance for AI Edits
 - Prefer minimal, surgical edits.
 - Do not redesign the whole page when only content changes are requested.

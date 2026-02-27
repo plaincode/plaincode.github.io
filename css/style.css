@@ -369,7 +369,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
-.post p {
+small {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}.post p {
     margin-bottom: 1rem;
 }
 
@@ -718,6 +721,88 @@ h1, h2, h3, h4, h5, h6 {
 .social-links a.active {
     color: var(--text-link-active);
     font-weight: bold;
+}
+
+
+/* Language switcher on legal/privacy pages */
+.lang-selector {
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+/* Notice/warning box (e.g. archive notice on scale page) */
+.notice-box {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+}
+.notice-box p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Responsive iframe embed (16:9) */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* YouTube thumbnail preview with play button overlay */
+.video-preview {
+    display: block;
+    margin: 2rem 0;
+    position: relative;
+}
+.video-preview img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.video-preview .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background: #ff0000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* "View all news" footer link on homepage */
+.news-footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+.news-footer a {
+    font-size: 1.1rem;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.news-footer a:hover {
+    color: var(--link-color-hover);
+}
+
+/* Centered post (e.g. 404 error page) */
+.post-centered {
+    text-align: center;
+    padding: 3rem 2rem;
 }
 
 /* Responsive footer link text */
